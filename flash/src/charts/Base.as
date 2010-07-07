@@ -139,7 +139,7 @@ package charts {
 		public function left_axis():Boolean {
 			
 			// anything that is not 'right' defaults to the left axis
-			return this.props.get('axis')!='right';
+			return this.props == null || this.props.get('axis') != 'right';
 		}
 		
 		//

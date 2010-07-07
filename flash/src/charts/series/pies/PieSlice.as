@@ -16,6 +16,7 @@
 	import mx.graphics.IFill;
 	import mx.graphics.SolidColor;
 	import flash.geom.Rectangle;
+	import flash.geom.Point;
 	import mx.graphics.GradientBase;
 	import mx.graphics.GradientEntry;
 	import string.Utils;
@@ -112,7 +113,7 @@
 			this.graphics.lineStyle( this.border_width, this.get_colour(), 1 );
 
 			this.graphics.moveTo(0, 0);
-			this.colour.begin(this.graphics, new Rectangle(-radius, -radius, 2*radius, 2*radius));
+			this.colour.begin(this.graphics, new Rectangle(-radius, -radius, 2*radius, 2*radius), new Point());
 			/*
 			if( this.gradientFill )
 			{

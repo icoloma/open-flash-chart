@@ -6,7 +6,13 @@ plus some patches proposed in the forums:
 
 http://forums.openflashchart.com/viewtopic.php?f=19&t=2143
 
+To compile:
+==========
+
+You will need Flex 4 or later installed into FLEX_HOME. Just invoke build.sh.
+
 To try it local:
+===============
 If you plan to test Flash components using static html files, create
 a file like:
 
