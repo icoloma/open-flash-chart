@@ -5,3 +5,17 @@ This project includes a checkout of the sources done at 7-Jul-2010,
 plus some patches proposed in the forums:
 
 http://forums.openflashchart.com/viewtopic.php?f=19&t=2143
+
+To try it local:
+If you plan to test Flash components using static html files, create
+a file like:
+
+~/.macromedia/Flash_Player/#Security/FlashPlayerTrust/myproject.cfg
+
+With a line inside like this:
+/home/<username>
+
+(Adjust to Windows accordingly). This will tell Flash that any file inside the 
+/home/<username> folder is trusted and will enable the communication between
+javascript and Flash.
+
