@@ -171,7 +171,7 @@
 		protected function first_show(x:Number, y:Number, width:Number, height:Number): void {
 			
 			this.on_show_animate = false;
-			Tweener.removeTweens(this);
+			Tweener.removeTweens(this); 
 			
 			// tr.aces('base.as', this.on_show.get('type') );
 			var d:Number = x / this.stage.stageWidth;

@@ -42,21 +42,6 @@ package caurina.transitions {
 		}
 
 		/**
-		 * Checks whether a string is on an array
-		 *
-		 * @param		p_string			String		String to search for
-		 * @param		p_array				Array		Array to be searched
-		 * @return							Boolean		Whether the array contains the string or not
-		 */
-		public static function isInArray(p_string:String, p_array:Array):Boolean {
-			var l:uint = p_array.length;
-			for (var i:uint = 0; i < l; i++) {
-				if (p_array[i] == p_string) return true;
-			}
-			return false;
-		}
-
-		/**
 		 * Returns the number of properties an object has
 		 *
 		 * @param		p_object			Object		Target object with a number of properties
@@ -67,8 +52,8 @@ package caurina.transitions {
 			for (var pName:String in p_object) totalProperties ++;
 			return totalProperties;
 		}
-        
-        /* Takes a variable number of objects as parameters and "adds" their properties, form left to right. If a latter object defines a property as null, it will be removed from the final object
+
+        /* Takes a variable number of objects as parameters and "adds" their properties, from left to right. If a latter object defines a property as null, it will be removed from the final object
     	* @param		args				Object(s)	A variable number of objects
     	* @return							Object		An object with the sum of all paremeters added as properties.
     	*/
@@ -82,7 +67,7 @@ package caurina.transitions {
     				    // delete in case is null
     					delete finalObject[prop];
     				}else{
-    					finalObject[prop] = currentObject[prop]
+    					finalObject[prop] = currentObject[prop];
     				}
     			}
     		}
