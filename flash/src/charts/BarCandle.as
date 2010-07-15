@@ -10,7 +10,7 @@
 			super( lv, num, group, 'candle' );
 		}
 		
-		public override function parse_bar( val:Object ):void {
+		public function parse_bar( val:Object ):void {
 			var vals:Array = val.split(",");
 		
 			//this.alpha = Number( vals[0] );
@@ -29,7 +29,7 @@
 		// this returns an array of strings like '1,2,3,4','2,3,4,5'
 		// these are then parsed further in PointBarCandle
 		//
-		protected override function parse_list( values:String ):Array {
+		protected function parse_list( values:String ):Array {
 			var groups:Array=new Array();
 			var tmp:String = '';
 			var start:Boolean = false;

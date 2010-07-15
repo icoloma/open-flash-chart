@@ -102,6 +102,10 @@
 			trace(prop + " : " + o[prop]) ;
 		}
 	
+		
+	Revision: 2008-07-24 DZ - Added allowing numbers with scientific notation
+	Revision: 2008-09-05 DZ - Allow comma before final brace/bracket of objects/arrays
+	
 **/
 
 // TODO REFACTORING PLEASE - type and co... !!!!!!
@@ -268,6 +272,11 @@ package com.serialization.json
                     }
                     _next();
                     _white();
+					// Allow for an extra comma before ending bracket
+                    if (ch == ']') {
+                        _next();
+                        return a;
+					}
                 }
             }
             _error("Bad Array");
@@ -308,6 +317,11 @@ package com.serialization.json
                     }
                     _next();
                     _white();
+					// Allow for an extra comma before ending brace
+                    if (ch == '}') {
+                        _next();
+                        return o;
+					}
                 }
             }
             _error("Bad Object") ;
@@ -316,7 +330,9 @@ package com.serialization.json
         _number = function ():* {
 
             var n:* = '' ;
+            var e:* = '' ;
             var v:* ;
+			var exp:* ;
 			var hex:String = '' ;
 			var sign:String = '' ;
 			
@@ -358,6 +374,39 @@ package com.serialization.json
             if (!isFinite(v)) {
                 _error("Bad Number");
             } else {
+				if ((ch == 'e') || (ch == 'E'))
+				{
+					// Continue processing exponent
+					_next();
+					var expSign:int = (ch == '-') ? -1 : 1;
+					// allow for a digit without a + sign
+					if ((ch == '+') || (ch == '-'))
+					{
+						_next();
+					}
+					if (_isDigit(ch))
+					{
+						e += ch;
+					}
+					else
+					{
+						_error("Bad Exponent");
+					}
+					while (_next() && ch >= '0' && ch <= '9') 
+					{
+						e += ch;
+					}
+					exp = expSign * e;
+					if (!isFinite(v)) 
+					{
+						_error("Bad Exponent");
+					}
+					else 
+					{
+						v = v * Math.pow(10, exp);
+						//trace("JSON._number - have exponent: n=" + n + "  e=" + e + "  v=" + v);
+					}
+				}
                 return v;
             }
 

@@ -1,10 +1,12 @@
 ﻿package charts.Elements {
 	import charts.Elements.PointDotBase;
+	import charts.series.dots.PointDotBase;
+	
 	import flash.display.BlendMode;
 	import flash.display.Graphics;
 	import flash.display.Sprite;
 	
-	public class Star extends PointDotBase {
+	public class Star extends charts.series.dots.PointDotBase {
 		
 		public function Star( index:Number, style:Object ) {
 			
@@ -31,12 +33,12 @@
 			
 		}
 		
-		private function calcXOnCircle(radius:Number, degrees:Number):Number
+		protected override function calcXOnCircle(radius:Number, degrees:Number):Number
 		{
 			return radius * Math.cos(degrees / 180 * Math.PI);
 		}
 		
-		private function calcYOnCircle(radius:Number, degrees:Number):Number
+		protected override function calcYOnCircle(radius:Number, degrees:Number):Number
 		{
 			return radius * Math.sin(degrees / 180 * Math.PI);
 		}
